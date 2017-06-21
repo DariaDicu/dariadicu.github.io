@@ -1,4 +1,4 @@
-$.getJSON('http://localhost:8000/x0_p_joint_10_3_17.json/', function (data) {
+$.getJSON('http://localhost:8000/x0_p_joint_10_3_17.json/', {}, function (data) {
 	 var myChart = Highcharts.chart('10_03_x0_p_sing_results', {
 	    chart: {
 	        type: 'scatter'
