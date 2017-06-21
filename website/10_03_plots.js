@@ -61,7 +61,7 @@ $.getJSON('https://localhost:8000/x0_p_joint_10_3_17.json/', {}, function (data)
 	});
 });
 
-$.getJSON('http://localhost:8000/x01_p_joint_10_3_17.json/', function (data) {
+$.getJSON('https://localhost:8000/x01_p_joint_10_3_17.json/', function (data) {
 	 var myChart = Highcharts.chart('10_03_x01_p_joint_results', {
 	    chart: {
 	        type: 'scatter'
@@ -205,7 +205,7 @@ function prepare_boxplot_data(data) {
 }
 
 // Loading marginals from joint inference.
-$.getJSON('http://localhost:8000/all_marginals_10_3_17_joint_inf.json', function (data) {
+$.getJSON('https://localhost:8000/all_marginals_10_3_17_joint_inf.json', function (data) {
 	 var myChart = Highcharts.chart('10_03_x0_all_marg_results', {
 	    chart: {
 	        type: 'column'
@@ -473,7 +473,7 @@ $.getJSON('http://localhost:8000/all_marginals_10_3_17_joint_inf.json', function
 	});
 });
 
-$.getJSON('http://localhost:8000/single_inf_all_marginals.json', function (data) {
+$.getJSON('https://localhost:8000/single_inf_all_marginals.json', function (data) {
 	 var myChart = Highcharts.chart('10_03_x0_single_results', {
 	    title: {
 	        text: 'Marginal distribution for x0 from single-experiment inference'
@@ -654,7 +654,7 @@ $.getJSON('http://localhost:8000/single_inf_all_marginals.json', function (data)
 });
 
 
-$.getJSON('http://localhost:8000/simulated_run_marginals.json', function (data) {
+$.getJSON('https://localhost:8000/simulated_run_marginals.json', function (data) {
 	 var myChart = Highcharts.chart('simulated_x0_marginal', {
 	    chart: {
 	        type: 'column'
@@ -837,7 +837,7 @@ $.getJSON('http://localhost:8000/simulated_run_marginals.json', function (data) 
 });
 
 // BCI data.
-$.getJSON('http://localhost:8000/bci_data.json', function (data) {
+$.getJSON('https://localhost:8000/bci_data.json', function (data) {
 	 var myChart = Highcharts.chart('bci', {
 	    title: {
 	        text: 'Bayesian confidence interval on simulated experiment'
@@ -977,7 +977,7 @@ $.getJSON('http://localhost:8000/bci_data.json', function (data) {
 
 
 // Alpha dependencies.
-$.getJSON('http://localhost:8000/alpha_boxplots.json', function (data) {
+$.getJSON('https://localhost:8000/alpha_boxplots.json', function (data) {
 	formatted_data = prepare_boxplot_data(data)
 	console.log(formatted_data)
 	var myChart = Highcharts.chart('boxplot', {
