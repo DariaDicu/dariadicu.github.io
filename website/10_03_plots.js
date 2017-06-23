@@ -1,4 +1,4 @@
-$.getJSON('https://dariadicu.github.io/x0_p_joint_10_3_17.json', function (data) {
+$.getJSON('https://dariadicu.github.io/website/x0_p_joint_10_3_17.json', function (data) {
 	 var myChart = Highcharts.chart('10_03_x0_p_sing_results', {
 	    chart: {
 	        type: 'scatter'
@@ -61,7 +61,7 @@ $.getJSON('https://dariadicu.github.io/x0_p_joint_10_3_17.json', function (data)
 	});
 });
 
-$.getJSON('https://dariadicu.github.io/x01_p_joint_10_3_17.json', function (data) {
+$.getJSON('https://dariadicu.github.io/website/x01_p_joint_10_3_17.json', function (data) {
 	 var myChart = Highcharts.chart('10_03_x01_p_joint_results', {
 	    chart: {
 	        type: 'scatter'
@@ -205,7 +205,7 @@ function prepare_boxplot_data(data) {
 }
 
 // Loading marginals from joint inference.
-$.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', function (data) {
+$.getJSON('https://dariadicu.github.io/website/all_marginals_10_3_17_joint_inf.json', function (data) {
 	 var myChart = Highcharts.chart('10_03_x0_all_marg_results', {
 	    chart: {
 	        type: 'column'
@@ -554,7 +554,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	});
 });
 
-$.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function (data) {
+$.getJSON('https://dariadicu.github.io/website/single_inf_all_marginals.json', function (data) {
 	 var myChart = Highcharts.chart('10_03_x0_single_results', {
 	    title: {
 	        text: 'Marginal distribution for x<sub>0</sub> from single-well inference',
@@ -731,7 +731,7 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 });
 
 
-$.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (data) {
+$.getJSON('https://dariadicu.github.io/website/simulated_run_marginals.json', function (data) {
 	 var myChart = Highcharts.chart('simulated_x0_marginal', {
 	    chart: {
 	        type: 'column'
@@ -921,7 +921,7 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 });
 
 // BCI data.
-$.getJSON('https://dariadicu.github.io/bci_data.json', function (data) {
+$.getJSON('https://dariadicu.github.io/website/bci_data.json', function (data) {
 	 var myChart = Highcharts.chart('bci', {
 	    title: {
 	        text: 'Bayesian confidence interval on simulated experiment'
@@ -1061,7 +1061,7 @@ $.getJSON('https://dariadicu.github.io/bci_data.json', function (data) {
 
 
 // Alpha dependencies.
-$.getJSON('https://dariadicu.github.io/alpha_boxplots.json', function (data) {
+$.getJSON('https://dariadicu.github.io/website/alpha_boxplots.json', function (data) {
 	formatted_data = prepare_boxplot_data(data)
 	var myChart = Highcharts.chart('boxplot', {
     chart: {
@@ -1116,7 +1116,7 @@ $.getJSON('https://dariadicu.github.io/alpha_boxplots.json', function (data) {
 
 
 // Alpha dependencies.
-$.getJSON('https://dariadicu.github.io/different_alphas_inference.json', function (data) {
+$.getJSON('https://dariadicu.github.io/website/different_alphas_inference.json', function (data) {
 	var myChart = Highcharts.chart('different_alphas_posteriors_100000', {
 	    chart: {
 	        type: 'column'
@@ -1334,7 +1334,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 
 
 // Alpha dependencies.
-$.getJSON('https://dariadicu.github.io/acf_data.json', function (data) {
+$.getJSON('https://dariadicu.github.io/website/acf_data.json', function (data) {
 	var myChart1 = Highcharts.chart('acf_x01', {
 	    chart: {
 	        type: 'line'
