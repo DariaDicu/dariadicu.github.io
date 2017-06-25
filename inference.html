@@ -33,6 +33,7 @@
 		        <li><a href="inference.html"><span>INFERENCE<span></a></li>
 		        <li><a href="results.html"><span>RESULTS<span></a></li>
 		        <li><a href="summary.html"><span>SUMMARY<span></a></li>
+		        <li><a href="glossary.html"><span>GLOSSARY</span></a></li>
 		      </ul>
 			  </div>
 			</nav>
@@ -107,8 +108,8 @@
  							<p>
 							The summation (marginalisation) over all possible values x<sub>1:n</sub> is not computationally feasible, so the pseudo-marginal approach is used instead (reference to Darren Wilkinson book). Instead of summing over all the possible values of the amplification curve x<sub>1:n</sub>, we obtain an estimate using a limited number of simulations of the amplification curve, called a particle cloud. The method is called pseudo-marginal as it 'marginalises' over a subset of the possible values of x<sub>1:n</sub>. As the number of particles approaches infinity, the approximation would approach the real likelihood. In practice, an order of 100 particles are used.
 							</p>
-							<img src="diagrams/jpeg_gif_pmmh.gif" alt="PMMH diagram">
-							<p><i>Diagram showing the pseudo-marginal approach for computing the log-posterior during a MH step.</i></p>
+							<center><img src="diagrams/pmmh.svg" alt="PMMH diagram" style="width:95%"></center>
+							<figcaption><center><i>Diagram showing the pseudo-marginal approach for computing the log-posterior during a MH step.</i></center></figcaption>
 						</div>
 					</div>
 				</div>
