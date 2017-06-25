@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Absolute quantitation of mtDNA</title>
+		<title>Absolute quantification of mtDNA</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -33,6 +33,7 @@
 		        <li><a href="inference.html"><span>INFERENCE<span></a></li>
 		        <li><a href="results.html"><span>RESULTS<span></a></li>
 		        <li><a href="summary.html"><span>SUMMARY<span></a></li>
+		        <li><a href="references.html"><span>REFERENCES<span></a></li>
 		        <li><a href="glossary.html"><span>GLOSSARY</span></a></li>
 		      </ul>
 			  </div>
@@ -42,23 +43,30 @@
 			<section id="one" class="main style1">
 				<div class="container">
 					<div class="row 150%">
-						<div class="12u 12u$(medium)">
+						<div class="12u$ 12u$(medium)">
 							<header class="major">
 								<h2>Overview</h2>
-								<p>The goal is to perform parameter inference on the Hidden Markov Model using fluorescence observations in order to obtain samples from the posterior probability <i>P(θ | f<sub>1:n</sub> )</i>. The parameterisation of the model is <br><i>θ</i> = [ <i>X<sub>0</sub> , r , σ <sup>2</sup></i> ], where <i>X<sub>0</sub></i> is the initial number of mtDNA molecules, <i>r</i> the amplification efficiency and <i>σ <sup>2</sup></i> the fluorescence noise. This project builds on the work of Lalam et al (cite) and uses a specialisation of the Metropolis Hastings (MH) algorithm, namely pseudo-marginal Metripolis Hastings (PMMH) (reference Darren Wilkinson), coded in C.</p>
+								<p>The goal is to perform parameter inference on the Hidden Markov Model using fluorescence observations in order to obtain samples from the posterior probability <i>P(θ | f<sub>1:n</sub> )</i>. The parameterisation of the model is <br><i>θ</i> = [ <i>X<sub>0</sub> , r , σ <sup>2</sup></i> ], where <i>X<sub>0</sub></i> is the initial number of mtDNA molecules, <i>r</i> the amplification efficiency and <i>σ <sup>2</sup></i> the fluorescence noise. This project builds on the work of Lalam et al (cite) and uses a specialisation of the Metropolis Hastings algorithm, namely pseudo-marginal Metripolis Hastings (PMMH) (reference Darren Wilkinson), coded in C.</p>
 							</header>
+						</div>
+
+						<div class="6u 12u$(medium)">
 							<p>
-								Metropolis Hastings is a common method for sampling from the posterior when the posterior itself is difficult to compute, but a function <i>g(θ)</i> that is proportional to the posterior is computationally feasible. The function <i>g(θ)</i> that we use in this case is the product of the likelihood and the prior probabilities:
+								Metropolis Hastings (MH) is a common method for sampling from the posterior when the posterior itself is difficult to compute, but a function <i>g(θ)</i> that is proportional to the posterior is computationally feasible. The function <i>g(θ)</i> that is used in this case is the product of the likelihood and the prior probabilities:
 							</p>
 							<p style="margin-left:50px">
 								<i>g( θ| f<sub>1:n</sub> ) = p( f<sub>1:n</sub> | θ ) π( θ )</i>
 							</p>
+							<p>Many different versions of MH exist. We use PMMH in order to account for the hidden states of the Markov Model (<a href="#three">see below</a>). </p>
+						</div>
+
+						<div class="6u$ 12u$(medium)">
 							<p>
-								Many different versions of MH exist. We use PMMH in order to account for the hidden states of the Markov Model (<a href="#three">see below</a>). Three subsequent runs of different MH versions are run:
+								Three subsequent runs of different MH versions are run:
 								<ul>
-								<li>A PMMH run for a limited number of iterations (e.g. 10,000) in order to get a better estimate of <i>θ<sub>MAP</sub></i>.</li>
-								<li>An adaptive PMMH run for a limited number of iterations (<a href="#four">discussed below</a>) in order to get a better estimate for the proposal covariance.</li>
-								<li>A normal PMMH run using the initial <i>θ<sub>MAP</sub></i> and the covariance obtained in the previous iterations.</li>
+								<li><b>Initial <i>θ<sub>MAP</sub></i> estimation:</b> A PMMH run for a limited number of iterations (e.g. 10,000) in order to get a better estimate of <i>θ<sub>MAP</sub></i>.</li>
+								<li><b>Covariance estimation:</b> An adaptive PMMH run for a limited number of iterations (<a href="#four">discussed below</a>) in order to get a better estimate for the proposal covariance.</li>
+								<li><b>Main run:</b> A normal PMMH run using the initial <i>θ<sub>MAP</sub></i> and the covariance obtained in the previous iterations.</li>
 								</ul>
  
 								The code for inference is written in C and available on <a href="https://github.com/DariaDicu/qPCR-inference">GitHub</a>.
@@ -77,11 +85,11 @@
 							</header>
 							<p>A generic MH algorithm has the following steps (link to wikipedia):
 							<ol>
-							<li>Initialize with some parameter <i>θ</i>, and compute <i>log g(θ)</i>.</p></li>
+							<li>Initialise with some parameter <i>θ</i>, and compute the log posterior <i>log g(θ)</i>.</p></li>
 							<li>At every iteration:
 								<ol>
 								<li>Propose a new <i>θ’</i> using a proposal distribution <i>Q(θ’|θ)</i>. Our proposal distribution is a multivariate Gaussian centered at <i>θ</i>, <i>N(θ, Σ)</i>.</li>
-								<li>Compute <i>log g(θ’)</i>. If <i>log g(θ’)</i> > <i>log g(θ)</i> accept the proposal <i>θ’</i>, otherwise accept with probability <i>g(θ’)/g(θ)</i>.</li>
+								<li>Compute the new log posterior <i>log g(θ’)</i>. If <i>log g(θ’)</i> > <i>log g(θ)</i> accept the proposal <i>θ’</i>, otherwise accept with probability <i>g(θ’)/g(θ)</i>.</li>
 								</ol>
 							</li>
 							</ol>
@@ -164,6 +172,9 @@
 
 		<!-- Footer -->
 			<section id="footer">
+				<ul class="actions">
+					<li><a href="results.html" class="button scrolly">Read next section</a></li>
+				</ul>
 				<ul class="copyright">
 					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 				</ul>

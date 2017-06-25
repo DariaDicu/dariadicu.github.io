@@ -4,7 +4,7 @@ $.getJSON('https://dariadicu.github.io/x0_p_joint_10_3_17.json', function (data)
 	        type: 'scatter'
 	    },
 	    title: {
-	        text: 'x<sub>0</sub> and r joint posterior from single-well inference',
+	        text: 'X<sub>0</sub> and r joint posterior from single-well inference',
 	        useHTML: true
 	    },
 
@@ -15,7 +15,7 @@ $.getJSON('https://dariadicu.github.io/x0_p_joint_10_3_17.json', function (data)
 	    xAxis: {
 	        allowDecimals: false,
 	        title: {
-	            text: 'Target quantity x<sub>0</sub> (number of molecules)',
+	            text: 'Target quantity X<sub>0</sub> (number of molecules)',
 	            useHTML: true
 	        },
 	        labels: {
@@ -37,7 +37,7 @@ $.getJSON('https://dariadicu.github.io/x0_p_joint_10_3_17.json', function (data)
 	        }
 	    },
 	    tooltip: {
-	        pointFormat: 'x0 = {point.x}, r = {point.y}'
+	        pointFormat: 'X0 = {point.x}, r = {point.y}'
 	    },
 	    plotOptions: {
 	        scatter: {
@@ -54,7 +54,7 @@ $.getJSON('https://dariadicu.github.io/x0_p_joint_10_3_17.json', function (data)
 	        }
 	    },
 	    series: [{
-	        name: '(x0, r) joint samples',
+	        name: '(X0, r) joint samples',
         	color: 'rgba(223, 83, 83, .4)',
 	        data: data
 	    }]
@@ -67,18 +67,18 @@ $.getJSON('https://dariadicu.github.io/x01_p_joint_10_3_17.json', function (data
 	        type: 'scatter'
 	    },
 	    title: {
-	        text: 'x<sub>0</sub><sup>1</sup> and r joint posterior from joint inference',
+	        text: 'X<sub>0</sub><sup>1</sup> and r joint posterior from parameter pooling',
 			useHTML: true 
 	    },
 
 	    subtitle: {
-	        text: 'Source: Experiment from 10/03/2017, qPCR well 253, joint inference'
+	        text: 'Source: Experiment from 10/03/2017, qPCR well 253, parameter pooling'
 	    },
 	    // X0.
 	    xAxis: {
 	        allowDecimals: false,
 	        title: {
-	            text: 'Target quantity x<sub>0</sub><sup>1</sup> (number of molecules)',
+	            text: 'Target quantity X<sub>0</sub><sup>1</sup> (number of molecules)',
 	            useHTML: true
 	        },
 	        labels: {
@@ -100,7 +100,7 @@ $.getJSON('https://dariadicu.github.io/x01_p_joint_10_3_17.json', function (data
 	        }
 	    },
 	    tooltip: {
-	        pointFormat: 'x0 = {point.x}, r = {point.y}'
+	        pointFormat: 'X0 = {point.x}, r = {point.y}'
 	    },
 	    plotOptions: {
 	        scatter: {
@@ -117,7 +117,7 @@ $.getJSON('https://dariadicu.github.io/x01_p_joint_10_3_17.json', function (data
 	        }
 	    },
 	    series: [{
-	        name: '(x0, r) joint samples',
+	        name: '(X0, r) joint samples',
 	        useHTML: true,
         	color: 'rgba(223, 83, 83, .4)',
 	        data: data
@@ -211,7 +211,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        type: 'column'
 	    },
 	    title: {
-	        text: 'Marginal distribution for x<sub>0</sub> from joint inference',
+	        text: 'Marginal distribution for X<sub>0</sub> from parameter pooling inference',
 	        useHTML:true
 	    },
 
@@ -239,7 +239,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	                style: {
 	                    fontStyle: 'italic'
 	                },
-	                text: 'Standard prediction for x<sub>0</sub><sup>1</sup>',
+	                text: 'Standard prediction for X<sub>0</sub><sup>1</sup>',
 	                useHTML: true
 	            }
 	        },
@@ -255,7 +255,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	                style: {
 	                    fontStyle: 'italic'
 	                },
-	                text: 'Standard prediction for x<sub>0</sub><sup>2</sup>',
+	                text: 'Standard prediction for X<sub>0</sub><sup>2</sup>',
 	                useHTML: true
 	            }
 	        },
@@ -271,7 +271,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	                style: {
 	                    fontStyle: 'italic'
 	                },
-	                text: 'Standard prediction for x<sub>0</sub><sup>3</sup>',
+	                text: 'Standard prediction for X<sub>0</sub><sup>3</sup>',
 	                useHTML: true
 	            }
 	        }]
@@ -279,12 +279,12 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(x<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
 	            useHTML:true
 	        }
 	    },
 	    series: [{
-	        name: 'Marginal posterior of x0-1, well 253, joint inference',
+	        name: 'Marginal posterior of x0-1, well 253, parameter pooling',
 	        useHTML: true,
 	        type: 'column',
 	        data: histogram(data.x01, 1.0),
@@ -294,7 +294,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0-2, well 254, joint inference',
+	        name: 'Marginal posterior of x0-2, well 254, parameter pooling',
 	        type: 'column',
 	        data: histogram(data.x02, 1.0),
         	color: 'rgba(0, 0, 255, .4)',
@@ -303,7 +303,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
             pointWidth: 10,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0-3, well 255, joint inference',
+	        name: 'Marginal posterior of x0-3, well 255, parameter pooling',
 	        type: 'column',
 	        data: histogram(data.x03, 1.0),
         	color: 'rgba(0,255,0,.4)',
@@ -318,7 +318,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	
 	 var myChart2 = Highcharts.chart('10_03_x01_marg_results', {
 	    title: {
-	        text: 'Marginal distribution for x<sub>0</sub> from joint inference',
+	        text: 'Marginal distribution for X<sub>0</sub> from parameter pooling inference',
 	        useHTML: true
 	    },
 
@@ -342,7 +342,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	                style: {
 	                    fontStyle: 'italic'
 	                },
-	                text: 'Standard prediction for x<sub>0</sub><sup>1</sup><br> (well 253)',
+	                text: 'Standard prediction for X<sub>0</sub><sup>1</sup><br> (well 253)',
 	                useHTML: true
 	            }
 	        }]
@@ -350,7 +350,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(x<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
 	            useHTML: true
 	        },
 	        plotLines: [{
@@ -370,7 +370,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        }]
 	    },
 	    series: [{
-	        name: 'Marginal posterior of x0, well 253, joint inference',
+	        name: 'Marginal posterior of x0, well 253, parameter pooling inference',
 	        type: 'column',
 	        data: histogram(data.x01, 1.0),
         	color: 'rgba(223, 83, 83, .8)',
@@ -390,7 +390,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	});
 	var myChart3 = Highcharts.chart('10_03_p_marg_results', {
 	    title: {
-	        text: 'Marginal distribution for efficiency r from joint inference'
+	        text: 'Marginal distribution for efficiency r from parameter pooling inference'
 	    },
 	    xAxis: {
 	        allowDecimals: true,
@@ -421,7 +421,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        }]
 	    },
 	    series: [{
-	        name: 'Marginal posterior of efficiency r, well 253, joint inference',
+	        name: 'Marginal posterior of efficiency r, well 253, parameter pooling inference',
 	        type: 'column',
 	        data: histogram(data.p, 0.0005),
         	color: 'rgba(237, 129, 29, 0.8)',
@@ -441,7 +441,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	});
 	var myChart4 = Highcharts.chart('10_03_sigma_marg_results', {
 	    title: {
-	        text: 'Marginal distribution for noise σ from joint inference'
+	        text: 'Marginal distribution for noise σ from parameter pooling inference'
 	    },
 	    xAxis: {
 	        allowDecimals: true,
@@ -467,7 +467,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
                 valueDecimals: 2
             }
         },{
-	        name: 'Marginal posterior of σ, well 253, joint inference',
+	        name: 'Marginal posterior of σ, well 253, parameter pooling inference',
 	        type: 'column',
 	        data: histogram(data.sigma, 0.05),
         	color: 'rgba(14, 156, 251, 0.8)',
@@ -490,7 +490,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'x<sub>0</sub> value',
+	            text: 'X<sub>0</sub> value',
 	            useHTML:true
 	        }
 	    },
@@ -557,7 +557,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function (data) {
 	 var myChart = Highcharts.chart('10_03_x0_single_results', {
 	    title: {
-	        text: 'Marginal distribution for x<sub>0</sub> from single-well inference',
+	        text: 'Marginal distribution for X<sub>0</sub> from single-well inference',
 	        useHTML: true
 	    },
 
@@ -579,7 +579,7 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	                style: {
 	                    fontStyle: 'italic'
 	                },
-	                text: 'Standard prediction for x<sub>0</sub><br> (well 253)',
+	                text: 'Standard prediction for X<sub>0</sub><br> (well 253)',
 	                useHTML: true
 	            }
 	        }]
@@ -587,7 +587,7 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(x<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
 	            useHTML: true
 	        },
 	        plotLines: [{
@@ -737,7 +737,7 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	        type: 'column'
 	    },
 	    title: {
-	        text: 'Marginal distribution for x<sub>0</sub> from joint inference on simulated data',
+	        text: 'Marginal distribution for X<sub>0</sub> from parameter pooling inference on simulated data',
 	        useHTML: true
 	    },
 
@@ -762,7 +762,7 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	                style: {
 	                    fontStyle: 'italic'
 	                },
-	                text: 'True value for x<sub>0</sub><sup>1</sup>',
+	                text: 'True value for X<sub>0</sub><sup>1</sup>',
 	                useHTML:true
 	            }
 	        }, {
@@ -777,7 +777,7 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	                style: {
 	                    fontStyle: 'italic'
 	                },
-	                text: 'True value for x<sub>0</sub><sup>2</sup>',
+	                text: 'True value for X<sub>0</sub><sup>2</sup>',
 	                useHTML:true
 	            }
 	        }]
@@ -785,12 +785,12 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(x<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
 	            useHTML:true
 	        }
 	    },
 	    series: [{
-	        name: 'Marginal posterior of x0-1, well 253, joint inference',
+	        name: 'Marginal posterior of x0-1, well 253, parameter pooling inference',
 	        type: 'column',
 	        data: histogram(data.x01, 1.0),
         	color: 'rgba(223, 83, 83, .4)',
@@ -799,7 +799,7 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0-2, well 253, joint inference',
+	        name: 'Marginal posterior of x0-2, well 253, parameter pooling inference',
 	        type: 'column',
 	        data: histogram(data.x02, 1.0),
         	color: 'rgba(0,255,0,.4)',
@@ -813,7 +813,7 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 
 	var myChart2 = Highcharts.chart('simulated_p_marginal', {
 	    title: {
-	        text: 'Marginal distribution for efficiency r from joint inference'
+	        text: 'Marginal distribution for efficiency r from parameter pooling inference'
 	    },
 
 	    subtitle: {
@@ -846,7 +846,7 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	        }
 	    },
 	    series: [{
-	        name: 'Marginal posterior of efficiency r, well 253, joint inference',
+	        name: 'Marginal posterior of efficiency r, well 253, parameter pooling inference',
 	        type: 'column',
 	        data: histogram(data.p, 0.0005),
         	color: 'rgba(237, 129, 29, 0.8)',
@@ -866,7 +866,7 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	});
 	var myChart3 = Highcharts.chart('simulated_sigma_marginal', {
 	    title: {
-	        text: 'Marginal distribution for noise σ from joint inference'
+	        text: 'Marginal distribution for noise σ from parameter pooling inference'
 	    },
 
 	    subtitle: {
@@ -909,7 +909,7 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
                 valueDecimals: 2
             }
         },{
-	        name: 'Marginal posterior of σ, well 253, joint inference',
+	        name: 'Marginal posterior of σ, well 253, parameter pooling inference',
 	        type: 'column',
 	        data: histogram(data.sigma, 0.05),
         	color: 'rgba(14, 156, 251, 0.8)',
@@ -1122,12 +1122,12 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        type: 'column'
 	    },
 	    title: {
-	        text: 'Marginal distribution for x<sub>0</sub><sup>1</sup> from joint inference with different α values',
+	        text: 'Standard with initial copy number 100,000',
 	        useHTML:true
 	    },
 
 	    subtitle: {
-	        text: 'Source: Joint inference on wells 253, 254, 255.'
+	        text: 'X<sub>0</sub> posteriors inferred with different α values, all of which are estimated from standards with initial copy number 100,000'
 	    },
 	    xAxis: {
 	        allowDecimals: true,
@@ -1153,12 +1153,12 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	    yAxis: {
 	        allowDecimals: true,
 	         title: {
-	            text: 'P(x<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
 	            useHTML:true
 	        }
 	    },
 	    series: [{
-	        name: 'Marginal posterior of x0-1, well 253, joint inference',
+	        name: 'Marginal posterior of x0 from α1',
 	        type: 'column',
 	        data: histogram(data.x01[0], 1.0),
         	color: 'rgba(223, 83, 83, .5)',
@@ -1167,7 +1167,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0-1, well 253, joint inference',
+	        name: 'Marginal posterior of x0 from α2',
 	        type: 'column',
 	        data: histogram(data.x01[1], 1.0),
         	color: 'rgba(255, 102, 0, .5)',
@@ -1176,7 +1176,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0-1, well 253, joint inference',
+	        name: 'Marginal posterior of x0 from α3',
 	        type: 'column',
 	        data: histogram(data.x01[2], 1.0),
         	color: 'rgba(204, 51, 0, .5)',
@@ -1194,12 +1194,12 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        type: 'column'
 	    },
 	    title: {
-	        text: 'Marginal distribution for x<sub>0</sub><sup>1</sup> from joint inference with different α values',
+	        text: 'Standard with initial copy number 10,000',
 	        useHTML:true
 	    },
 
 	    subtitle: {
-	        text: 'Source: Joint inference on wells 253, 254, 255.'
+	        text: 'X<sub>0</sub> posteriors inferred with different α values, all of which are estimated from standards with initial copy number 10,000'
 	    },
 	    xAxis: {
 	        allowDecimals: true,
@@ -1225,13 +1225,13 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	    yAxis: {
 	        allowDecimals: true,
 	         title: {
-	            text: 'P(x<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
 	            useHTML:true
 	        }
 	    },
 	    series: [
 	    {
-	        name: 'Marginal posterior of x0-1, well 253, joint inference',
+	        name: 'Marginal posterior of x0 from α4',
 	        type: 'column',
 	        data: histogram(data.x01[3], 1.0),
         	color: 'rgba(0,255,0,.5)',
@@ -1240,7 +1240,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0-1, well 253, joint inference',
+	        name: 'Marginal posterior of x0 from α5',
 	        type: 'column',
 	        data: histogram(data.x01[4], 1.0),
         	color: 'rgba(0, 204, 102,.5)',
@@ -1249,7 +1249,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0-1, well 253, joint inference',
+	        name: 'Marginal posterior of x0 from α6',
 	        type: 'column',
 	        data: histogram(data.x01[5], 1.0),
         	color: 'rgba(0, 153, 51,.5)',
@@ -1264,12 +1264,12 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        type: 'column'
 	    },
 	    title: {
-	        text: 'Marginal distribution for x<sub>0</sub><sup>1</sup> from joint inference with different α values',
+	        text: 'Standard with initial copy number 1,000',
 	        useHTML:true
 	    },
 
 	    subtitle: {
-	        text: 'Source: Joint inference on wells 253, 254, 255.'
+	        text: 'X<sub>0</sub> posteriors inferred with different α values, all of which are estimated from standards with initial copy number 1,000'
 	    },
 	    xAxis: {
 	        allowDecimals: true,
@@ -1295,13 +1295,13 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	    yAxis: {
 	        allowDecimals: true,
 	         title: {
-	            text: 'P(x<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
 	            useHTML:true
 	        }
 	    },
 	    series: [
 	    {
-	        name: 'Marginal posterior of x0-1, well 253, joint inference',
+	        name: 'Marginal posterior of x0 from α7',
 	        type: 'column',
 	        data: histogram(data.x01[6], 1.0),
         	color: 'rgba(102, 204, 255, 0.5)',
@@ -1310,7 +1310,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0-1, well 253, joint inference',
+	        name: 'Marginal posterior of x0 from α7',
 	        type: 'column',
 	        data: histogram(data.x01[7], 1.0),
         	color: 'rgba(153, 51, 255, 0.5)',
@@ -1319,7 +1319,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0-1, well 253, joint inference',
+	        name: 'Marginal posterior of x0 from α9',
 	        type: 'column',
 	        data: histogram(data.x01[8], 1.0),
         	color: 'rgba(14, 156, 251, 0.5)',

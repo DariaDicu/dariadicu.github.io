@@ -33,6 +33,7 @@
 		        <li><a href="inference.html"><span>INFERENCE<span></a></li>
 		        <li><a href="results.html"><span>RESULTS<span></a></li>
 		        <li><a href="summary.html"><span>SUMMARY<span></a></li>
+		        <li><a href="references.html"><span>REFERENCES<span></a></li>
 				<li><a href="glossary.html"><span>GLOSSARY</span></a></li>
 		      </ul>
 			  </div>
@@ -152,7 +153,7 @@
 						<div class="12u$ 12u$(medium)">
 							<header class="major">
 								<h2>Single-experiment inference</h2>
-								<p>The standard curve method discussed above uses a single point on the amplification curve to estimate the inital target quantity <i>X<sub>0</sub></i>. It does not provide an error model and fails to account for the inherent stochasticity of the qPCR process. This projects extends the work of Lalam et al (reference) and uses Bayesian inference on the data from the entire amplification curve to determine <i>X<sub>0</sub></i>.
+								<p>The standard curve method discussed above uses a single point on the amplification curve to estimate the inital target quantity <i>X<sub>0</sub></i>. It does not provide an error model and fails to account for the inherent stochasticity of the qPCR process. This projects extends the work of Lalam et al (reference) and uses Bayesian inference on the data from the entire amplification curve to determine <i>X<sub>0</sub></i>. Most importantly, it provides error bars that capture our belief in the copy number estimate, which is essential for interpreting experimental results.
 								</p>
 							</header>
 							<p>Single-experiment inference uses as data the fluorescence intensity reads from the amplification curve of a sample with unknown initial copy number <i>X<sub>0</sub></i>. By looking at the entire amplification curve rather than just the C<sub>T</sub> value, it can infer the efficiency of a sample without assuming it is the same of that of a standard. 
@@ -167,36 +168,15 @@
 						<div class="6u$ 12u$(medium)">
 							<div id="x0_posterior" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 						</div>
-						<div class="12u$ 12u$(medium)">
-							<h3>Exponential phase identification</h3>
-
-							
-							
-						</div>
-
-						<div class="6u 12u$(medium)">
-							<p>The mathematical model used to represent the qPCR amplification assumes that the efficiency is constant (see more details in <a href="model.html">Model</a>). The fluorescence reads corresponding to the exponential phase must first be identified, then used as observation data in the inference method.</p>
-							<p>In order to identify the exponential phase, we use two models, a sigmoidal curve and an exponential curve. We iteratively fit both models on the curve and progressively discard the last cycle from the data. The exponential phase is identified when the exponential model fits the data better than the sigmoid model. The key aspect is what "fitting the data better" means.</p>
-							<p>The mathematical definitons of the sigmoid and exponential model are omitted here, but depicted in the adjoining figure. The sigmoid model is more complex with respect to parameter count, as it uses four parameters to restrict the shape of the curve, whereas the exponential model uses three.
-							</p>
-							<p>We use the Akaike Information Criterion (AIC) to determine which of the two models best fits the data. AIC is a common measure and incorporates both the goodness-of-fit of the data (the likelihood of the data given the model) and the complexity of the model (the number of parameters used to estimate the curve).
-							</p>
-							<p>The figures to the side show how AIC considers the trade-off between complexity and the goodness-of-fit. For the fluorescence data shown here, the sigmoid is a better fit when considering 36 cycles or more. On the other hand, the exponential is a better fit when considering less than 36 cycles. Therefore, we would use the first 35 cycles for inference on this data set.
-							</p>
-						</div>
-						<div class="6u$ 12u$(medium) important(medium)">
-							<div id="sigmoid_vs_exponential" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-							<figcaption><center>For 45 cycles, the sigmoid is a better fit than the exponential.</center></figcaption>
-							<br>
-							<div id="sigmoid_vs_exponential2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-							<figcaption><center>For 35 cycles, the exponential is a better fit according to AIC. Although the goodness-of-fit is identical, the exponential has lower complexity with respect to parameter count.</center></figcaption>
-						</div>
 					</div>
 				</div>
 			</section>
 
 		<!-- Footer -->
 			<section id="footer">
+				<ul class="actions">
+					<li><a href="model.html" class="button scrolly">Read next section</a></li>
+				</ul>
 				<ul class="copyright">
 					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 				</ul>
