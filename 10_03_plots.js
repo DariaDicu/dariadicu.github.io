@@ -1,4 +1,4 @@
-$.getJSON('https://dariadicu.github.io/x0_p_joint_10_3_17.json', function (data) {
+$.getJSON('x0_p_joint_10_3_17.json', function (data) {
 	 var myChart = Highcharts.chart('10_03_x0_p_sing_results', {
 	    chart: {
 	        type: 'scatter'
@@ -61,7 +61,7 @@ $.getJSON('https://dariadicu.github.io/x0_p_joint_10_3_17.json', function (data)
 	});
 });
 
-$.getJSON('https://dariadicu.github.io/x01_p_joint_10_3_17.json', function (data) {
+$.getJSON('x01_p_joint_10_3_17.json', function (data) {
 	 var myChart = Highcharts.chart('10_03_x01_p_joint_results', {
 	    chart: {
 	        type: 'scatter'
@@ -72,7 +72,7 @@ $.getJSON('https://dariadicu.github.io/x01_p_joint_10_3_17.json', function (data
 	    },
 
 	    subtitle: {
-	        text: 'Source: Experiment from 10/03/2017, qPCR well 253, parameter pooling'
+	        text: 'Source: Experiment from 10/03/2017, qPCR well 253, parameter pooling with data from wells 254, 255'
 	    },
 	    // X0.
 	    xAxis: {
@@ -91,7 +91,7 @@ $.getJSON('https://dariadicu.github.io/x01_p_joint_10_3_17.json', function (data
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'Efficiency p'
+	            text: 'Efficiency r'
 	        },
 	        labels: {
 	            formatter: function () {
@@ -155,7 +155,7 @@ function generate_uniform_prior(range_min, range_max, step) {
 	var i, data = [];
 	var beta_norm = 3.141592653589793238463;
 	for (i = range_min; i <= range_max; i += step) {
-		p = 0.005/(range_max - range_min);
+		p = 1/(range_max - range_min);
 		data.push([i, p])
 	}
 	return data
@@ -205,7 +205,7 @@ function prepare_boxplot_data(data) {
 }
 
 // Loading marginals from joint inference.
-$.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', function (data) {
+$.getJSON('all_marginals_10_3_17_joint_inf.json', function (data) {
 	 var myChart = Highcharts.chart('10_03_x0_all_marg_results', {
 	    chart: {
 	        type: 'column'
@@ -224,7 +224,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        min: 1,
 	        max: 100,
 	        title: {
-	            text: 'Number of molecules',
+	            text: 'Copy number X<sub>0</sub> (number of molecules)',
 	            useHTML: true
 	        },
 	        plotLines: [{
@@ -279,12 +279,12 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|F<sub>1:n</sub>, α)',
 	            useHTML:true
 	        }
 	    },
 	    series: [{
-	        name: 'Marginal posterior of x0-1, well 253, parameter pooling',
+	        name: 'Marginal posterior of X0 in well 253, parameter pooling',
 	        useHTML: true,
 	        type: 'column',
 	        data: histogram(data.x01, 1.0),
@@ -294,7 +294,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0-2, well 254, parameter pooling',
+	        name: 'Marginal posterior of X0 in well 254, parameter pooling',
 	        type: 'column',
 	        data: histogram(data.x02, 1.0),
         	color: 'rgba(0, 0, 255, .4)',
@@ -303,7 +303,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
             pointWidth: 10,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0-3, well 255, parameter pooling',
+	        name: 'Marginal posterior of X0 in well 255, parameter pooling',
 	        type: 'column',
 	        data: histogram(data.x03, 1.0),
         	color: 'rgba(0,255,0,.4)',
@@ -326,6 +326,10 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        text: 'Source: Experiment from 10/03/2017, qPCR well 253'
 	    },
 	    xAxis: {
+	        title: {
+	            text: 'Initial copy number (molecules)',
+	            useHTML: true
+	        },
 	        allowDecimals: true,
 	        gridLineWidth: 1,
 	        min: 1,
@@ -350,7 +354,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|F<sub>1:n</sub>, α)',
 	            useHTML: true
 	        },
 	        plotLines: [{
@@ -370,7 +374,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        }]
 	    },
 	    series: [{
-	        name: 'Marginal posterior of x0, well 253, parameter pooling inference',
+	        name: 'Marginal posterior of X0',
 	        type: 'column',
 	        data: histogram(data.x01, 1.0),
         	color: 'rgba(223, 83, 83, .8)',
@@ -379,12 +383,12 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        pointPlacement: 'on'
 	    },
 	    {
-            name: 'x0 prior',
+            name: 'Uniform prior',
 	        dashStyle: 'dash',
             data: generate_uniform_prior(0, 100, 0.01),
             type: 'spline',
             tooltip: {
-                pointFormat: 'Uniform prior on x0'
+                pointFormat: 'Uniform prior on X0'
             }
         }]
 	});
@@ -401,7 +405,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(r|f<sub>1:n</sub>, α)',
+	            text: 'P(r|F<sub>1:n</sub>, α)',
 	            useHTML:true
 	        },
 	        plotLines: [{
@@ -421,7 +425,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        }]
 	    },
 	    series: [{
-	        name: 'Marginal posterior of efficiency r, well 253, parameter pooling inference',
+	        name: 'Marginal posterior of efficiency r',
 	        type: 'column',
 	        data: histogram(data.p, 0.0005),
         	color: 'rgba(237, 129, 29, 0.8)',
@@ -430,7 +434,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        pointPlacement: 'on'
 	    },
 	    {
-            name: 'r prior',
+            name: 'Jeffreys prior',
 	        dashStyle: 'dash',
             data: generate_beta_prior(0.6, 1.0, 0.001),
             type: 'spline',
@@ -441,7 +445,8 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	});
 	var myChart4 = Highcharts.chart('10_03_sigma_marg_results', {
 	    title: {
-	        text: 'Marginal distribution for noise σ from parameter pooling inference'
+	        text: 'Marginal distribution for noise σ<sup>2</sup> from parameter pooling inference',
+	        useHTML: true
 	    },
 	    xAxis: {
 	        allowDecimals: true,
@@ -453,13 +458,13 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        allowDecimals: true,
 	        max: 0.06,
 	        title: {
-	            text: 'P(σ|f<sub>1:n</sub>, alpha)',
+	            text: 'P(σ<sup>2</sup>|F<sub>1:n</sub>, alpha)',
 	            useHTML:true
 	        }
 	    },
 	    series: [
 	    {
-            name: 'σ prior',
+            name: 'Jeffreys prior',
 	        dashStyle: 'dash',
             data: generate_jeff_prior(0.0, 6.0, 0.01),
             type: 'spline',
@@ -467,7 +472,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
                 valueDecimals: 2
             }
         },{
-	        name: 'Marginal posterior of σ, well 253, parameter pooling inference',
+	        name: 'Marginal posterior of noise',
 	        type: 'column',
 	        data: histogram(data.sigma, 0.05),
         	color: 'rgba(14, 156, 251, 0.8)',
@@ -481,11 +486,16 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        type: 'line'
 	    },
 	    title: {
-	        text: 'Traceplot for x01'
+	        text: 'Traceplot for X<sub>0</sub>',
+	        useHTML: true
 	    },
 	    xAxis: {
 	        allowDecimals: true,
-	        gridLineWidth: 1
+	        gridLineWidth: 1,
+	        title: {
+	            text: 'Metropolis Hastings iteration no.',
+	            useHTML:true
+	        }
 	    },
 	    yAxis: {
 	        allowDecimals: true,
@@ -495,7 +505,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        }
 	    },
 	    series: [{
-	        name: 'Trace plot for x01',
+        	showInLegend: false,  
 	        type: 'line',
 	        data: data.x01,
 	        lineWidth:1
@@ -511,7 +521,11 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	    },
 	    xAxis: {
 	        allowDecimals: true,
-	        gridLineWidth: 1
+	        gridLineWidth: 1,
+	        title: {
+	            text: 'Metropolis Hastings iteration no.',
+	            useHTML:true
+	        }
 	    },
 	    yAxis: {
 	        allowDecimals: true,
@@ -520,7 +534,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        }
 	    },
 	    series: [{
-	        name: 'Trace plot for efficiency r',
+        	showInLegend: false,  
 	        type: 'line',
 	        data: data.p,
 	        lineWidth:1
@@ -532,20 +546,26 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	        type: 'line'
 	    },
 	    title: {
-	        text: 'Traceplot for noise σ'
+	        text: 'Traceplot for noise σ<sup>2</sup>',
+	        useHTML: true
 	    },
 	    xAxis: {
 	        allowDecimals: true,
-	        gridLineWidth: 1
+	        gridLineWidth: 1,
+	        title: {
+	            text: 'Metropolis Hastings iteration no.',
+	            useHTML:true
+	        }
 	    },
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'Noise σ value'
+	            text: 'Noise σ<sup>2</sup> value',
+	            useHTML: true
 	        }
 	    },
 	    series: [{
-	        name: 'Trace plot for noise σ',
+        	showInLegend: false,  
 	        type: 'line',
 	        data: data.sigma,
 	        lineWidth:1
@@ -554,7 +574,7 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	});
 });
 
-$.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function (data) {
+$.getJSON('single_inf_all_marginals.json', function (data) {
 	 var myChart = Highcharts.chart('10_03_x0_single_results', {
 	    title: {
 	        text: 'Marginal distribution for X<sub>0</sub> from single-well inference',
@@ -565,7 +585,10 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	        text: 'Source: Experiment from 10/03/2017, qPCR well 253'
 	    },
 	    xAxis: {
-	        allowDecimals: true,
+	        allowDecimals: true, title: {
+	            text: 'Initial copy number (molecules)',
+	            useHTML: true
+	        },
 	        gridLineWidth: 1,
 	        plotLines: [{
 	            color: 'black',
@@ -587,7 +610,7 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|F<sub>1:n</sub>, α)',
 	            useHTML: true
 	        },
 	        plotLines: [{
@@ -607,7 +630,7 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	        }]
 	    },
 	    series: [{
-	        name: 'Marginal posterior of x0, well 253, single-well inference',
+	        name: 'Marginal posterior of X0',
 	        type: 'column',
 	        data: histogram(data.x0, 1.0),
         	color: 'rgba(223, 83, 83, .8)',
@@ -616,12 +639,12 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	        pointPlacement: 'on'
 	    },
 	    {
-            name: 'x0 prior',
+            name: 'Uniform prior',
 	        dashStyle: 'dash',
             data: generate_uniform_prior(0, 100, 0.01),
             type: 'spline',
             tooltip: {
-                pointFormat: 'Uniform prior on x0'
+                pointFormat: 'Uniform prior on X0'
             }
         }]
 	});
@@ -639,7 +662,7 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(r|f<sub>1:n</sub>, α)',
+	            text: 'P(r|F<sub>1:n</sub>, α)',
 	            useHTML: true
 	        },
 	        plotLines: [{
@@ -659,7 +682,7 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	        }]
 	    },
 	    series: [{
-	        name: 'Marginal posterior of efficiency r, well 253, single-well inference',
+	        name: 'Marginal posterior of efficiency r',
 	        type: 'column',
 	        data: histogram(data.p, 0.005),
         	color: 'rgba(237, 129, 29, 0.8)',
@@ -668,7 +691,7 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	        pointPlacement: 'on'
 	    },
 	    {
-            name: 'r prior',
+            name: 'Jeffreys prior',
 	        dashStyle: 'dash',
             data: generate_beta_prior(0.6, 1.0, 0.001),
             type: 'spline',
@@ -679,7 +702,8 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	});
 	var myChart3 = Highcharts.chart('10_03_sigma_single_results', {
 	    title: {
-	        text: 'Marginal distribution for noise σ from single-well inference'
+	        text: 'Marginal distribution for noise σ<sup>2</sup> from single-well inference',
+	        useHTML: true
 	    },
 	    xAxis: {
 	        allowDecimals: true,
@@ -690,7 +714,7 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(σ|f<sub>1:n</sub>, α)',
+	            text: 'P(σ<sup>2</sup>|F<sub>1:n</sub>, α)',
 	            useHTML: true
 	        },
 	        max: 0.06,
@@ -711,7 +735,7 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	        }]
 	    },
 	    series: [{
-	        name: 'Marginal posterior of noise σ, well 253, single-well inference',
+	        name: 'Marginal posterior of noise',
 	        type: 'column',
 	        data: histogram(data.sigma, 0.05),
         	color: 'rgba(14, 156, 251, 0.8)',
@@ -719,7 +743,7 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-            name: 'σ prior',
+            name: 'Jeffreys prior',
 	        dashStyle: 'dash',
             data: generate_jeff_prior(0.0, 6.0, 0.01),
             type: 'spline',
@@ -731,7 +755,7 @@ $.getJSON('https://dariadicu.github.io/single_inf_all_marginals.json', function 
 });
 
 
-$.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (data) {
+$.getJSON('simulated_run_marginals.json', function (data) {
 	 var myChart = Highcharts.chart('simulated_x0_marginal', {
 	    chart: {
 	        type: 'column'
@@ -742,7 +766,7 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	    },
 
 	    subtitle: {
-	        text: 'Source: In-silico generated data using θ mean.',
+	        text: 'Source: In-silico generated data using the mean θ sample from inference on real experimental data.',
 	        useHTML:true
 	    },
 	    xAxis: {
@@ -750,6 +774,10 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	        gridLineWidth: 1,
 	        min: 1,
 	        max: 100,
+	        title: {
+	            text: 'Initial copy number (molecules)',
+	            useHTML: true
+	        },
 	        plotLines: [{
 	            color: 'black',
 	            dashStyle: 'dash',
@@ -785,12 +813,12 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|F<sub>1:n</sub>, α)',
 	            useHTML:true
 	        }
 	    },
 	    series: [{
-	        name: 'Marginal posterior of x0-1, well 253, parameter pooling inference',
+	        name: 'Marginal posterior of X0 in well 253, parameter pooling inference',
 	        type: 'column',
 	        data: histogram(data.x01, 1.0),
         	color: 'rgba(223, 83, 83, .4)',
@@ -799,7 +827,7 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0-2, well 253, parameter pooling inference',
+	        name: 'Marginal posterior of X0 in well 254, parameter pooling inference',
 	        type: 'column',
 	        data: histogram(data.x02, 1.0),
         	color: 'rgba(0,255,0,.4)',
@@ -820,6 +848,10 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	        text: 'Source: In-silico qPCR experiment'
 	    },
 	    xAxis: {
+	    	title: {
+	            text: 'Initial copy number (molecules)',
+	            useHTML: true
+	        },
 	        allowDecimals: true,
 	        gridLineWidth: 1,
 	        plotLines: [{
@@ -841,12 +873,12 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(r|f<sub>1:n</sub>, α)',
+	            text: 'P(r|F<sub>1:n</sub>, α)',
 	            useHTML: true
 	        }
 	    },
 	    series: [{
-	        name: 'Marginal posterior of efficiency r, well 253, parameter pooling inference',
+	        name: 'Marginal posterior of efficiency r',
 	        type: 'column',
 	        data: histogram(data.p, 0.0005),
         	color: 'rgba(237, 129, 29, 0.8)',
@@ -866,14 +898,18 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	});
 	var myChart3 = Highcharts.chart('simulated_sigma_marginal', {
 	    title: {
-	        text: 'Marginal distribution for noise σ from parameter pooling inference'
+	        text: 'Marginal distribution for noise σ<sup>2</sup> from parameter pooling inference',
+	        useHTML: true
 	    },
 
 	    subtitle: {
 	        text: 'Source: In-silico qPCR experiment'
 	    },
 	    xAxis: {
-	        allowDecimals: true,
+	        allowDecimals: true, title: {
+	            text: 'Initial copy number (molecules)',
+	            useHTML: true
+	        },
 	        gridLineWidth: 1,
 	        plotLines: [{
 	            color: 'black',
@@ -895,13 +931,13 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 	        allowDecimals: true,
 	        max: 0.06,
 	        title: {
-	            text: 'P(σ|f<sub>1:n</sub>, α)',
+	            text: 'P(σ<sup>2</sup>|F<sub>1:n</sub>, α)',
 	            useHTML: true
 	        }
 	    },
 	    series: [
 	    {
-            name: 'σ prior',
+            name: 'Jeffreys prior',
 	        dashStyle: 'dash',
             data: generate_jeff_prior(0.0, 6.0, 0.01),
             type: 'spline',
@@ -909,7 +945,7 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
                 valueDecimals: 2
             }
         },{
-	        name: 'Marginal posterior of σ, well 253, parameter pooling inference',
+	        name: 'Marginal posterior of noise',
 	        type: 'column',
 	        data: histogram(data.sigma, 0.05),
         	color: 'rgba(14, 156, 251, 0.8)',
@@ -921,85 +957,18 @@ $.getJSON('https://dariadicu.github.io/simulated_run_marginals.json', function (
 });
 
 // BCI data.
-$.getJSON('https://dariadicu.github.io/bci_data.json', function (data) {
-	 var myChart = Highcharts.chart('bci', {
-	    title: {
-	        text: 'Bayesian confidence interval on simulated experiment'
-	    },
-
-	    subtitle: {
-	        text: 'Source: In-silico qPCR experiment with theta_mean.'
-	    },
-	    xAxis: {
-	        allowDecimals: true,
-	        gridLineWidth: 1,
-	    },
-	    yAxis: {
-	        allowDecimals: true,
-	        title: {
-	            text: 'Fluorescence intensity (background corrected)'
-	        }
-	    },
-	    plotOptions: {
-		    spline: {
-		        marker: {
-		            enabled: false
-		        }
-		    }
-		},
-	    series: [{
-            name: 'Simulation from θ MAP',
-            data: data.y_map,
-            width: 1,
-            pointStart: 1,
-            type: 'spline',
-            tooltip: {
-                valueDecimals: 2
-            },
-            zIndex:1001
-        },
-        {
-            name: 'Mean of simulated fluorescence',
-            data: data.y_mean,
-            width: 1,
-            pointStart: 1,
-            type: 'spline',
-            tooltip: {
-                valueDecimals: 2
-            },
-            zIndex:1000
-        },
-        {
-            name: 'Real fluorescence data',
-            data: data.f_data,
-            color: 'red',
-            width: 1,
-	         dashStyle: 'dash',
-            pointStart: 1,
-            type: 'spline',
-            allowPointSelect:false,
-            zIndex:1010
-        },
-        {
-            type: 'arearange',
-            zoomType: 'x',
-            name: 'Confidence interval 5-95%',
-            pointStart: 1,
-            data: compute_fill_between_bci(data.y_q5, data.y_q95)
-        }]
-	});
+$.getJSON('bci_data.json', function (data) {
 	var myChart2 = Highcharts.chart('bci_zoomed', {
 	    title: {
-	        text: 'Bayesian confidence interval on simulated experiment (zoomed in)'
-	    },
-
-	    subtitle: {
-	        text: 'Source: In-silico qPCR experiment with theta_mean.'
+	        text: 'Confidence interval on fluorescence reads'
 	    },
 	    xAxis: {
+	        title: {
+	            text: 'Cycle number'
+	        },
 	        allowDecimals: true,
 	        gridLineWidth: 1,
-	        min: 32
+	        min: 27
 	    },
 	    yAxis: {
 	        allowDecimals: true,
@@ -1015,7 +984,7 @@ $.getJSON('https://dariadicu.github.io/bci_data.json', function (data) {
 		    }
 		},
 	    series: [{
-            name: 'Simulation from θ MAP',
+            name: 'Fluorescence for simulation from θ MAP',
             data: data.y_map,
             width: 1,
             pointStart: 1,
@@ -1026,7 +995,7 @@ $.getJSON('https://dariadicu.github.io/bci_data.json', function (data) {
             zIndex:1001
         },
         {
-            name: 'Mean of simulated fluorescence',
+            name: 'Mean fluorescence',
             data: data.y_mean,
             width: 1,
             pointStart: 1,
@@ -1052,7 +1021,7 @@ $.getJSON('https://dariadicu.github.io/bci_data.json', function (data) {
         {
             type: 'arearange',
             zoomType: 'x',
-            name: 'Confidence interval 5-95%',
+            name: 'Fluorescence confidence interval 5-95%',
             pointStart: 1,
             data: compute_fill_between_bci(data.y_q5, data.y_q95)
         }]
@@ -1061,7 +1030,7 @@ $.getJSON('https://dariadicu.github.io/bci_data.json', function (data) {
 
 
 // Alpha dependencies.
-$.getJSON('https://dariadicu.github.io/alpha_boxplots.json', function (data) {
+$.getJSON('alpha_boxplots.json', function (data) {
 	formatted_data = prepare_boxplot_data(data)
 	var myChart = Highcharts.chart('boxplot', {
     chart: {
@@ -1116,7 +1085,7 @@ $.getJSON('https://dariadicu.github.io/alpha_boxplots.json', function (data) {
 
 
 // Alpha dependencies.
-$.getJSON('https://dariadicu.github.io/different_alphas_inference.json', function (data) {
+$.getJSON('different_alphas_inference.json', function (data) {
 	var myChart = Highcharts.chart('different_alphas_posteriors_100000', {
 	    chart: {
 	        type: 'column'
@@ -1132,6 +1101,10 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	    xAxis: {
 	        allowDecimals: true,
 	        gridLineWidth: 1,
+	         title: {
+	            text: 'X<sub>0</sub> copy number (molecules)',
+	            useHTML:true
+	        },
 	        min: 1,
 	        max: 100,
 	        plotLines: [{
@@ -1146,19 +1119,19 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	                style: {
 	                    fontStyle: 'italic'
 	                },
-	                text: 'True value for x0_1'
+	                text: 'True value for X0'
 	            }
 	        }]
 	    },
 	    yAxis: {
 	        allowDecimals: true,
 	         title: {
-	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|F<sub>1:n</sub>, α)',
 	            useHTML:true
 	        }
 	    },
 	    series: [{
-	        name: 'Marginal posterior of x0 from α1',
+	        name: 'Marginal posterior of X0 from α1',
 	        type: 'column',
 	        data: histogram(data.x01[0], 1.0),
         	color: 'rgba(223, 83, 83, .5)',
@@ -1167,7 +1140,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0 from α2',
+	        name: 'Marginal posterior of X0 from α2',
 	        type: 'column',
 	        data: histogram(data.x01[1], 1.0),
         	color: 'rgba(255, 102, 0, .5)',
@@ -1176,7 +1149,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0 from α3',
+	        name: 'Marginal posterior of X0 from α3',
 	        type: 'column',
 	        data: histogram(data.x01[2], 1.0),
         	color: 'rgba(204, 51, 0, .5)',
@@ -1206,6 +1179,10 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        gridLineWidth: 1,
 	        min: 1,
 	        max: 100,
+	        title: {
+	            text: 'X<sub>0</sub> copy number (molecules)',
+	            useHTML:true
+	        },
 	        plotLines: [{
 	            color: 'black',
 	            dashStyle: 'dash',
@@ -1218,20 +1195,20 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	                style: {
 	                    fontStyle: 'italic'
 	                },
-	                text: 'True value for x0_1'
+	                text: 'True value for X0'
 	            }
 	        }]
 	    },
 	    yAxis: {
 	        allowDecimals: true,
 	         title: {
-	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|F<sub>1:n</sub>, α)',
 	            useHTML:true
 	        }
 	    },
 	    series: [
 	    {
-	        name: 'Marginal posterior of x0 from α4',
+	        name: 'Marginal posterior of X0 from α4',
 	        type: 'column',
 	        data: histogram(data.x01[3], 1.0),
         	color: 'rgba(0,255,0,.5)',
@@ -1240,7 +1217,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0 from α5',
+	        name: 'Marginal posterior of X0 from α5',
 	        type: 'column',
 	        data: histogram(data.x01[4], 1.0),
         	color: 'rgba(0, 204, 102,.5)',
@@ -1249,7 +1226,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0 from α6',
+	        name: 'Marginal posterior of X0 from α6',
 	        type: 'column',
 	        data: histogram(data.x01[5], 1.0),
         	color: 'rgba(0, 153, 51,.5)',
@@ -1272,6 +1249,10 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        text: 'X<sub>0</sub> posteriors inferred with different α values, all of which are estimated from standards with initial copy number 1,000'
 	    },
 	    xAxis: {
+	    	title: {
+	            text: 'X<sub>0</sub> copy number (molecules)',
+	            useHTML:true
+	        },
 	        allowDecimals: true,
 	        gridLineWidth: 1,
 	        min: 1,
@@ -1288,20 +1269,20 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	                style: {
 	                    fontStyle: 'italic'
 	                },
-	                text: 'True value for x0_1'
+	                text: 'True value for X0'
 	            }
 	        }]
 	    },
 	    yAxis: {
 	        allowDecimals: true,
 	         title: {
-	            text: 'P(X<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|F<sub>1:n</sub>, α)',
 	            useHTML:true
 	        }
 	    },
 	    series: [
 	    {
-	        name: 'Marginal posterior of x0 from α7',
+	        name: 'Marginal posterior of X0 from α7',
 	        type: 'column',
 	        data: histogram(data.x01[6], 1.0),
         	color: 'rgba(102, 204, 255, 0.5)',
@@ -1310,7 +1291,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0 from α7',
+	        name: 'Marginal posterior of X0 from α7',
 	        type: 'column',
 	        data: histogram(data.x01[7], 1.0),
         	color: 'rgba(153, 51, 255, 0.5)',
@@ -1319,7 +1300,7 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 	        groupPadding: 0,
 	        pointPlacement: 'on'
 	    },{
-	        name: 'Marginal posterior of x0 from α9',
+	        name: 'Marginal posterior of X0 from α9',
 	        type: 'column',
 	        data: histogram(data.x01[8], 1.0),
         	color: 'rgba(14, 156, 251, 0.5)',
@@ -1334,13 +1315,13 @@ $.getJSON('https://dariadicu.github.io/different_alphas_inference.json', functio
 
 
 // Alpha dependencies.
-$.getJSON('https://dariadicu.github.io/acf_data.json', function (data) {
+$.getJSON('acf_data.json', function (data) {
 	var myChart1 = Highcharts.chart('acf_x01', {
 	    chart: {
 	        type: 'line'
 	    },
 	    title: {
-	        text: 'Autocorrelation function for x01'
+	        text: 'Autocorrelation function for X0'
 	    },
 	    xAxis: {
 	        allowDecimals: true,
@@ -1353,7 +1334,7 @@ $.getJSON('https://dariadicu.github.io/acf_data.json', function (data) {
 	        }
 	    },
 	    series: [{
-	        name: 'ACF for x01',
+        	showInLegend: false,  
 	        type: 'line',
 	        data: data.x01_acf,
 	        lineWidth:1
@@ -1377,7 +1358,7 @@ $.getJSON('https://dariadicu.github.io/acf_data.json', function (data) {
 	        }
 	    },
 	    series: [{
-	        name: 'ACF for efficiency r',
+        	showInLegend: false,  
 	        type: 'line',
 	        data: data.p_acf,
 	        lineWidth:1
@@ -1401,7 +1382,7 @@ $.getJSON('https://dariadicu.github.io/acf_data.json', function (data) {
 	        }
 	    },
 	    series: [{
-	        name: 'ACF for noise σ',
+        	showInLegend: false,  
 	        type: 'line',
 	        data: data.sigma_acf,
 	        lineWidth:1

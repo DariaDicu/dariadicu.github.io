@@ -157,10 +157,11 @@ function compute_fill_between_bci(y1, y2) {
 }
 
 // Stochasticity data.
-$.getJSON('https://dariadicu.github.io/stochasticity_p075.json', function (data) {
+$.getJSON('stochasticity_p075.json', function (data) {
 	var myChart2 = Highcharts.chart('stochasticity2', {
 	    title: {
-	        text: 'Stochasticity in amplification for the same X<sub>0</sub>'
+	        text: 'Stochasticity in amplification for the same X<sub>0</sub>',
+          useHTML: true
 	    },
 
 	    subtitle: {
@@ -170,7 +171,7 @@ $.getJSON('https://dariadicu.github.io/stochasticity_p075.json', function (data)
 	    xAxis: {
 	        allowDecimals: true,
 	        gridLineWidth: 1,
-	        min: 32,
+	        min: 27,
 	        title: {
 	        	text: 'Cycles'
 	        }
@@ -447,21 +448,21 @@ Highcharts.theme = {
 };
 
 
-$.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', function (data) {
+$.getJSON('all_marginals_10_3_17_joint_inf.json', function (data) {
 	// Apply the theme
 	Highcharts.setOptions(Highcharts.theme);
 	 var myChart = Highcharts.chart('x0_posterior', {
 	    title: {
-	        text: 'Marginal distribution for x<sub>0</sub> from joint inference',
+	        text: 'Marginal distribution for X<sub>0</sub>',
 	        useHTML: true
-	    },
-
-	    subtitle: {
-	        text: 'Source: Experiment from 10/03/2017, qPCR well 253'
 	    },
 	    xAxis: {
 	        allowDecimals: true,
 	        gridLineWidth: 1,
+          title: {
+              text: 'Initial copy number (molecules)',
+              useHTML: true
+          },
 	        plotLines: [{
 	            color: 'white',
 	            dashStyle: 'dash',
@@ -482,12 +483,12 @@ $.getJSON('https://dariadicu.github.io/all_marginals_10_3_17_joint_inf.json', fu
 	    yAxis: {
 	        allowDecimals: true,
 	        title: {
-	            text: 'P(x<sub>0</sub>|f<sub>1:n</sub>, α)',
+	            text: 'P(X<sub>0</sub>|F<sub>1:n</sub>, α)',
 	            useHTML: true
 	        }
 	    },
 	    series: [{
-	        name: 'Marginal posterior of x0',
+	        name: 'Marginal posterior of X0',
 	        type: 'column',
 	        data: histogram(data.x01, 1.0),
 	        pointPadding: 0,

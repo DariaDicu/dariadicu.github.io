@@ -6,7 +6,7 @@ function compute_fill_between_bci(y1, y2) {
 	return data
 }
 // Stochasticity data.
-$.getJSON('https://dariadicu.github.io/stochasticity_alpha_estimate.json', function (data) {
+$.getJSON('stochasticity_alpha_estimate.json', function (data) {
 	var myChart1 = Highcharts.chart('stochasticity_alpha_estimate_1', {
 	    title: {
 	        text: 'Stochasticity in amplification when X<sub>0</sub> = 50',
@@ -117,13 +117,11 @@ function prepare_boxplot_data(data) {
 
 function prepare_boxplot_data_same_primer(data) {
 	e3 = data.exp3.sort()
-	for (var i = 0; i < e3.length; i++) e3[i] = Math.exp(e3[i])
 	e3.unshift(0)
 	e4 = data.exp4.sort()
-	for (var i = 0; i < e4.length; i++) e4[i] = Math.exp(e4[i])
 	e4.unshift(1)
-    var arr = [e3,e4];
-    return arr;
+  var arr = [e3,e4];
+  return arr;
 }
 
 function sigmoid_for_alpha() {
@@ -397,7 +395,7 @@ Highcharts.theme = {
 
 
 // Alpha dependencies.
-$.getJSON('https://dariadicu.github.io/alpha_boxplots_same_primer.json', function (data) {
+$.getJSON('alpha_boxplots_same_primer.json', function (data) {
 
 	var myChart_sigmoid_fitting = Highcharts.chart('sigmoid_fitting', {
 	    title: {
@@ -495,7 +493,7 @@ $.getJSON('https://dariadicu.github.io/alpha_boxplots_same_primer.json', functio
 });
 
 // Alpha dependencies.
-$.getJSON('https://dariadicu.github.io/alpha_boxplots.json', function (data) {
+$.getJSON('alpha_boxplots.json', function (data) {
 	formatted_data = prepare_boxplot_data(data)
 	var myChart = Highcharts.chart('boxplot', {
     chart: {
